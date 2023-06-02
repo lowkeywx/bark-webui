@@ -1,5 +1,5 @@
 import gradio as gr
-from bark.generation import SUPPORTED_LANGS
+from bark.generation import ALLOWED_PROMPTS
 from bark import SAMPLE_RATE, generate_audio
 from scipy.io.wavfile import write as write_wav
 import os
@@ -28,12 +28,8 @@ def generate_text_to_speech(text_prompt, selected_speaker, text_temp, waveform_t
     return file_path
 
 
-speakers_list = []
-
-for lang, code in SUPPORTED_LANGS:
-    for n in range(10):
-        speakers_list.append(f"{code}_speaker_{n}")
-
+speakers_list = list(ALLOWED_PROMPTS)
+speakers_list.sort()
 input_text = gr.Textbox(label="Input Text", lines=4, placeholder="Enter text here...")
 text_temp = gr.Slider(
     0.1,
