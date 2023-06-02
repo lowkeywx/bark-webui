@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  tts-api:
+    build: .
+    # command: python main.py
+    restart: always
+    expose:
+      - "6010"
+    ports:
+      - "6010:6010"
+    # environment:
+    #   - NVIDIA_VISIBLE_DEVICES=all
+    #   - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+    volumes:
+      - ./cache:/root/.cache
+      - ./nltk_data:/root/nltk_data
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia  #驱动
+              count: all #或"all"  #数量
+              capabilities: [gpu]    #指定需要支持的功能；可以配置多个不同功能
+
+
+
+
+
