@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  tts-api:
+  bark-webui:
     build: .
     # command: python main.py
     restart: always
