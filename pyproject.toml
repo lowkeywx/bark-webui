@@ -25,6 +25,7 @@ dependencies = [
     "torch",
     "tqdm",
     "transformers",
+    "gradio",
 ]
 
 [project.urls]
